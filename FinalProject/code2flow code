@@ -1,0 +1,83 @@
+server code starts;
+run the client;
+while(stop button is not pressed)
+{
+  show main gui;
+  if(user wants to check in/out)
+  {
+    checkInOut();
+  }
+  else if(user wants to train/retrain)
+  {
+    train();
+  }
+  else if(admin wants to see admin page)
+  {
+    showAdminPage();
+  }
+}
+update members table with data attended and time spent in meetings;
+clear attendence table;
+end client program;
+power off server computer;
+
+function checkInOut()
+{
+  client takes picture;
+  client converts picture to byte array;
+  client sends picture to server;
+  server converts byte array to picture;
+  server feeds picture to api;
+  api returns an id;
+  find matching id in members table and load values into person object;
+  if(person is in attendence table)
+  {
+    change isPresent in members table to false;
+  }
+  else
+  {
+    put member info in attendence table;
+    change isPresent in members table to true;
+  }
+  return isPresent to client;
+  if(isPresent)
+  {
+    display "checked in";
+  }
+  else
+  {
+    display "checked out";
+  }
+}
+
+function train()
+{
+  collect info;
+  if(person is already in members table)
+  {
+    update info;
+    change isPresent in members table to true;
+  }
+  else
+  {
+    insert in member into table;
+    change isPresent in members table to true;
+  }
+  take 4 pictures;
+  display "trained and checked in";
+}
+
+function showAdminPage()
+{
+  display page with attendence table;
+  while(back button is not pressed)
+  {
+    if(displayMembersTable button is pressed)
+    {
+      while(back button is not pressed)
+      {
+        display members table in seperate page;
+      }
+    }
+  }
+}
